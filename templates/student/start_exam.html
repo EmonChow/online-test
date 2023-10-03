@@ -39,19 +39,21 @@
       </div>
       <div class="col-md-9">
        
-            <div class="question-content">
-                {% for question in question_data %}
-                <div class="question">
-                    <p>Question {{ question.number }}:</p>
-                    <p>{{ question.question_text }}</p>
-                    <ul>
-                        <li>{{ question.option1 }}</li>
-                        <li>{{ question.option2 }}</li>
-                        <li>{{ question.option3 }}</li>
-                        <li>{{ question.option4 }}</li>
-                    </ul>
-                </div>
-                {% endfor %}
+        <div class="question-content">
+            {% for question in question_text %}
+            <div class="question">
+                <p>Question {{ question.number }}:</p>
+                <p>{{ question.question_text }}</p>
+                <ul>
+                    <li>{{ question.option1 }}</li>
+                    <li>{{ question.option2 }}</li>
+                    <li>{{ question.option3 }}</li>
+                    <li>{{ question.option4 }}</li>
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+            
            
         </div>
        
