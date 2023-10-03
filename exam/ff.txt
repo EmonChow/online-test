@@ -1,0 +1,116 @@
+{% extends 'student/studentbase.html' %}
+{% block content %}
+{% load static %}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<div class="jumbotron my-4">
+  <form class="form" autocomplete="off" action="/student/calculate-marks" method="POST" id="quizForm">
+    {% csrf_token %}
+    <h2 style="text-align: center;">Course: {{ course.course_name }}</h2>
+    <div id="questionContainer">
+      <!-- Question content will be displayed here -->
+    </div>
+    <input class="btn btn-success btn-lg" style="border-radius: 0%;" type="button" value="Next" id="nextButton">
+  </form>
+</div>
+
+<script>
+  var currentQuestionIndex = 0;
+  var questions = [
+    {% for q in questions %}
+      {
+        question: "{{ q.question|escapejs }}",
+        option1: "{{ q.option1|escapejs }}",
+        option2: "{{ q.option2|escapejs }}",
+        option3: "{{ q.option3|escapejs }}",
+        option4: "{{ q.option4|escapejs }}",
+        marks: "{{ q.marks|escapejs }}"
+      }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ];
+  var timerDuration = 600; // 10 minutes
+  var timerInterval;
+
+  function startTimer() {
+    clearInterval(timerInterval);
+    timerInterval = setInterval(updateTimer, 1000);
+  }
+
+  function updateTimer() {
+    var timerElement = document.getElementById('timer');
+    var timerMessageElement = document.getElementById('timerMessage');
+    var minutes = Math.floor(timerDuration / 60);
+    var seconds = timerDuration % 60;
+
+    if (timerDuration >= 0) {
+      timerElement.innerHTML = 'Time remaining: ' + minutes + 'm ' + seconds + 's';
+    } else {
+      clearInterval(timerInterval);
+      timerElement.innerHTML = 'Time expired!';
+      timerMessageElement.innerHTML = 'The time is up. Your answers have been submitted.';
+      document.getElementById('nextButton').disabled = true; // Disable the "Next" button
+    }
+
+    timerDuration--;
+  }
+
+  function displayQuestion(index) {
+    var currentQuestion = questions[index];
+    var questionHtml = `
+      <div id="timer" style="text-align: center;"></div>
+      <div id="timerMessage" style="text-align: center;"></div>
+      <h3 class="text-danger">${index + 1}. ${currentQuestion.question}</h3>
+      <h4 style="text-align: right;">[${currentQuestion.marks} Marks]</h4>
+      
+      <div class="form-check mx-4">
+        <input class="form-check-input" type="radio" name="answer" id="option1" value="Option1">
+        <label class="form-check-label" for="option1">${currentQuestion.option1}</label>
+      </div>
+      
+      <!-- Add other options similarly -->
+      
+      <input class="btn btn-success btn-lg" style="border-radius: 0%;" type="button" value="Next" id="nextButton">
+    `;
+
+    var questionContainer = document.getElementById('questionContainer');
+    questionContainer.innerHTML = questionHtml;
+    startTimer();
+  }
+
+  function saveAnswer() {
+    var selectedOption = document.querySelector('input[name="answer"]:checked');
+    if (selectedOption) {
+      // Save the selected answer for the current question
+      var answer = selectedOption.value;
+      // You can use AJAX to send the answer to the server if needed
+    }
+  }
+
+  function loadNextQuestion() {
+    saveAnswer();
+
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+      displayQuestion(currentQuestionIndex);
+    } else {
+      var questionContainer = document.getElementById('questionContainer');
+      questionContainer.innerHTML = '<p>All questions have been answered.</p>';
+      document.getElementById('nextButton').disabled = true;
+    }
+  }
+
+  // Attach event listener to the "Next" button
+  var nextButton = document.getElementById('nextButton');
+  nextButton.addEventListener('click', loadNextQuestion);
+
+  // Initial display of the first question
+  displayQuestion(currentQuestionIndex);
+</script>
+
+<br><br><br><br><br><br>
+{% endblock content %}

@@ -1,0 +1,169 @@
+{% extends 'student/studentbase.html' %}
+{% block content %}
+{% load static %}
+{% load custom_filters %} 
+<head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<div class="jumbotron my-4">
+  <h2 style="text-align: center;">Course: {{ course.course_name }}</h2>
+  <div class="row">
+      <div class="col-md-3">
+          <div class="number-list">
+              <table class="table table-bordered">
+                  {% comment %} <thead>
+                      <tr>
+                          <th>Question Number</th>
+                      </tr>
+                  </thead> {% endcomment %}
+                  <tbody>
+                    <tr>
+                        <h4>Question Number</h4>
+                    </tr>
+                      {% for group in grouped_numbers %}
+                      <tr>
+                          {% for digit in group %}
+                          <td>
+                              <button class="btn btn-primary" onclick="showQuestion({{ digit }})">
+                                  {{ digit }}
+                              </button>
+                          </td>
+                          {% endfor %}
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+      </div>
+      <div class="col-md-9">
+       
+            <div class="question-content">
+                {% for question in question_data %}
+                <div class="question">
+                    <p>Question {{ question.number }}:</p>
+                    <p>{{ question.question_text }}</p>
+                    <ul>
+                        <li>{{ question.option1 }}</li>
+                        <li>{{ question.option2 }}</li>
+                        <li>{{ question.option3 }}</li>
+                        <li>{{ question.option4 }}</li>
+                    </ul>
+                </div>
+                {% endfor %}
+           
+        </div>
+       
+        
+        
+        
+        
+        
+        
+      </div>
+  </div>
+</div>
+
+
+
+
+
+<script>
+  var currentQuestionIndex = 0;
+  var questions = [
+      {% for q in questions %}
+      {
+          question: "{{ q.question|escapejs }}",
+          option1: "{{ q.option1|escapejs }}",
+          option2: "{{ q.option2|escapejs }}",
+          option3: "{{ q.option3|escapejs }}",
+          option4: "{{ q.option4|escapejs }}",
+          marks: "{{ q.marks|escapejs }}"
+      }{% if not forloop.last %},{% endif %}
+      {% endfor %}
+  ];
+  var timerDuration = 600; // 10 minutes
+  var timerInterval = setInterval(updateTimer, 1000);
+  var questionContainer = document.getElementById('questionContainer');
+  var submitBtn = document.getElementById('submitBtn');
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+
+  function updateTimer() {
+      // Implement your timer logic here
+  }
+
+  function saveAns() {  
+    var ele = document.getElementsByTagName('input'); 
+    for (i = 0; i < ele.length; i++) { 
+      if (ele[i].type === "radio") {  
+        if (ele[i].checked) {        
+          setCookie(ele[i].name, ele[i].value, 3);
+        }
+      } 
+    } 
+    
+    // Enable the submit button
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+      showQuestion(currentQuestionIndex);
+    } else {
+      questionContainer.innerHTML = '<p>All questions have been answered.</p>';
+      submitBtn.disabled = true;
+    }
+
+    return false; // Prevent form submission
+  }
+
+  function showQuestion(index) {
+      currentQuestionIndex = index;
+      var currentQuestion = questions[index];
+      var questionHtml = '<div id="timer" style="text-align: center;"></div>' +
+          '<div id="timerMessage" style="text-align: center;"></div>' +
+          '<h3 class="text-danger">' + (index + 1) + '. ' + currentQuestion.question + '</h3>' +
+          '<h4 style="text-align: right;">[' + currentQuestion.marks + ' Marks]</h4>' +
+          '<div class="form-check mx-4">' +
+          '<input class="form-check-input" type="radio" name="answer" id="option1" value="Option1">' +
+          '<label class="form-check-label" for="option1">' + currentQuestion.option1 + '</label>' +
+          '</div>' +
+          '<!-- Add other options similarly -->' +
+          '<input id="submitBtn" class="btn btn-success" style="border-radius: 0%;" type="submit" value="Submit Answer">';
+
+      questionContainer.innerHTML = questionHtml;
+      updateQuestionNumbersHighlight(index);
+  }
+
+  function updateQuestionNumbersHighlight(index) {
+      // Update the question numbers' colors to highlight the current question
+      var questionNumbers = document.querySelectorAll('[id^="question_"]');
+      questionNumbers.forEach(function(numberElement, i) {
+          var isCurrent = i === index;
+          numberElement.style.display = isCurrent ? 'block' : 'none';
+      });
+
+      // Enable/disable next and previous buttons based on the current question index
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === questions.length - 1;
+      submitBtn.disabled = false; // Enable the submit button
+  }
+
+  function showNextQuestion() {
+      if (currentQuestionIndex < questions.length - 1) {
+          currentQuestionIndex++;
+          showQuestion(currentQuestionIndex);
+      }
+  }
+
+  function showPreviousQuestion() {
+      if (currentQuestionIndex > 0) {
+          currentQuestionIndex--;
+          showQuestion(currentQuestionIndex);
+      }
+  }
+
+  // Initial display of the first question
+  showQuestion(currentQuestionIndex);
+</script>
+<br><br><br><br><br><br>
+{% endblock content %}
