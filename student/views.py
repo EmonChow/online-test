@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import get_object_or_404, render,redirect,reverse
 from . import forms,models
 from django.db.models import Sum
@@ -69,7 +70,6 @@ def take_exam_view(request,pk):
 @login_required(login_url='studentlogin')
 @user_passes_test(is_student)
 
-
 def start_exam_view(request, pk):
     course = get_object_or_404(QMODEL.Course, id=pk)
     questions = QMODEL.Question.objects.filter(course=course)
@@ -77,8 +77,11 @@ def start_exam_view(request, pk):
     if request.method == 'POST':
         pass
 
-    # Create a list of question numbers and their corresponding questions
-    question_data = [{'number': i + 1, 'question_text': question.question} for i, question in enumerate(questions)]
+    # Create a list of question data including options
+    question_data = [{'number': i + 1, 'question_text': question.question, 
+                     'options': [question.option1, question.option2, 
+                                 question.option3, question.option4]} 
+                    for i, question in enumerate(questions)]
 
     # Group consecutive two-digit numbers
     grouped_numbers = []
@@ -89,12 +92,74 @@ def start_exam_view(request, pk):
             grouped_numbers.append(current_group)
             current_group = []
 
-    response = render(request, 'student/start_exam.html', {'course': course, 'question_data': question_data, 'grouped_numbers': grouped_numbers})
+    context = {
+        'course': course,
+        'question_data': question_data,
+        'grouped_numbers': grouped_numbers,
+        'questions_json': json.dumps(question_data),  # Convert question data to JSON
+    }
 
-    # Set the course_id as a cookie (converted to string)
-    response.set_cookie('course_id', str(course.id))
+    return render(request, 'student/start_exam.html', context)
 
-    return response
+
+# def start_exam_view(request, pk):
+#     course = get_object_or_404(QMODEL.Course, id=pk)
+#     questions = QMODEL.Question.objects.filter(course=course)
+
+#     if request.method == 'POST':
+#         pass
+
+#     # Create a list of question numbers and their corresponding questions
+#     question_data = [{'number': i + 1, 'question_text': question.question} for i, question in enumerate(questions)]
+
+#     # Group consecutive two-digit numbers
+#     grouped_numbers = []
+#     current_group = []
+#     for digit in range(1, 51):
+#         current_group.append(str(digit))
+#         if len(current_group) == 5 or digit == 50:
+#             grouped_numbers.append(current_group)
+#             current_group = []
+
+#     context = {
+#         'course': course,
+#         'question_data': question_data,
+#         'grouped_numbers': grouped_numbers,
+#         'questions_json': json.dumps(question_data),  # Convert question data to JSON
+#     }
+
+#     return render(request, 'student/start_exam.html', context)
+
+
+
+
+
+# def start_exam_view(request, pk):
+#     course = get_object_or_404(QMODEL.Course, id=pk)
+#     questions = QMODEL.Question.objects.filter(course=course)
+
+#     if request.method == 'POST':
+#         pass
+
+#     # Create a list of question numbers and their corresponding questions
+#     question_data = [{'number': i + 1, 'question_text': question.question} for i, question in enumerate(questions)]
+#     question_data_json = json.dumps(question_data) 
+#     # Group consecutive two-digit numbers
+#     grouped_numbers = []
+#     current_group = []
+#     for digit in range(1, 51):
+#         current_group.append(str(digit))
+#         if len(current_group) == 5 or digit == 50:
+#             grouped_numbers.append(current_group)
+#             current_group = []
+
+#     response = render(request, 'student/start_exam.html', {'course': course, 'question_data_json': question_data_json, 'question_data': question_data, 'grouped_numbers': grouped_numbers})
+
+#     # Set the course_id as a cookie (converted to string)
+#     response.set_cookie('course_id', str(course.id))
+
+#     return response
+
 @login_required(login_url='studentlogin')
 @user_passes_test(is_student)
 def calculate_marks_view(request):

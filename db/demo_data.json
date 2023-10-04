@@ -1,0 +1,111 @@
+[
+     {
+       "model": "exam.course",
+       "pk": 1,
+       "fields": {
+         "course_name": "Course 1",
+         "question_number": 5,
+         "total_marks": 50
+       }
+     },
+     {
+       "model": "exam.course",
+       "pk": 2,
+       "fields": {
+         "course_name": "Course 2",
+         "question_number": 10,
+         "total_marks": 100
+       }
+     },
+     {
+       "model": "exam.course",
+       "pk": 3,
+       "fields": {
+         "course_name": "Course 3",
+         "question_number": 7,
+         "total_marks": 70
+       }
+     },
+   
+     {
+       "model": "exam.question",
+       "pk": 1,
+       "fields": {
+         "course": 1,
+         "marks": 10,
+         "question": "What is the capital of France?",
+         "option1": "Paris",
+         "option2": "London",
+         "option3": "Berlin",
+         "option4": "Madrid",
+         "answer": "Option1"
+       }
+     },
+     {
+       "model": "exam.question",
+       "pk": 2,
+       "fields": {
+         "course": 1,
+         "marks": 10,
+         "question": "What is 2 + 2?",
+         "option1": "1",
+         "option2": "3",
+         "option3": "4",
+         "option4": "5",
+         "answer": "Option3"
+       }
+     },
+   
+     {
+       "model": "exam.result",
+       "pk": 1,
+       "fields": {
+         "student": 1,
+         "exam": 1,
+         "marks": 45,
+         "date": "2023-10-01T12:00:00Z"
+       }
+     },
+     {
+       "model": "exam.result",
+       "pk": 2,
+       "fields": {
+         "student": 1,
+         "exam": 1,
+         "marks": 38,
+         "date": "2023-10-02T12:00:00Z"
+       }
+     },
+
+     {
+          "model": "student.student",
+          "pk": 1,
+          "fields": {
+       
+          "profile_pic": "profile_pic/Student/student1.jpg",
+          "address": "123 Main Street, City",
+          "mobile": "123-456-7890"
+          }
+     },
+     {
+          "model": "student.student",
+          "pk": 2,
+          "fields": {
+          "profile_pic": "profile_pic/Student/student2.jpg",
+          "address": "456 Elm Avenue, Town",
+          "mobile": "987-654-3210"
+          }
+     },
+     {
+          "model": "student.student",
+          "pk": 3,
+          "fields": {
+          "profile_pic": "profile_pic/Student/student3.jpg",
+          "address": "789 Oak Lane, Village",
+          "mobile": "555-123-4567"
+          }
+     }
+     
+
+        
+   ]

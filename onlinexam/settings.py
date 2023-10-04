@@ -85,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'online_exam',
         'USER': 'postgres',
-        'PASSWORD':'astagferullah',
+        'PASSWORD':'12345',
         'HOST': 'localhost',
     }
 }
