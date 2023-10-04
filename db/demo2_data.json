@@ -1,0 +1,885 @@
+[
+     {
+          "model": "exam.question",
+          "pk": 3,
+          "fields": {
+            "course": 1,
+            "marks": 10,
+            "question": "What is the capital of France?",
+            "option1": "Paris",
+            "option2": "London",
+            "option3": "Berlin",
+            "option4": "Madrid",
+            "answer": "Option1"
+          }
+        },
+        {
+          "model": "exam.question",
+          "pk": 4,
+          "fields": {
+            "course": 1,
+            "marks": 10,
+            "question": "What is 2 + 2?",
+            "option1": "1",
+            "option2": "3",
+            "option3": "4",
+            "option4": "5",
+            "answer": "Option3"
+          }
+        },
+        
+          {
+              "model": "exam.question",
+              "pk": 5,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the largest planet in our solar system?",
+                  "option1": "Earth",
+                  "option2": "Mars",
+                  "option3": "Saturn",
+                  "option4": "Jupiter",
+                  "answer": "Option4"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 6,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which gas do plants absorb from the atmosphere?",
+                  "option1": "Oxygen",
+                  "option2": "Carbon Dioxide",
+                  "option3": "Nitrogen",
+                  "option4": "Hydrogen",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 7,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the capital of Japan?",
+                  "option1": "Beijing",
+                  "option2": "Seoul",
+                  "option3": "Tokyo",
+                  "option4": "Bangkok",
+                  "answer": "Option3"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 8,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which planet is known as the Red Planet?",
+                  "option1": "Earth",
+                  "option2": "Mars",
+                  "option3": "Venus",
+                  "option4": "Mercury",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 9,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the chemical symbol for gold?",
+                  "option1": "Go",
+                  "option2": "Au",
+                  "option3": "Ag",
+                  "option4": "Ge",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 10,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which gas is most abundant in Earth's atmosphere?",
+                  "option1": "Oxygen",
+                  "option2": "Carbon Dioxide",
+                  "option3": "Nitrogen",
+                  "option4": "Hydrogen",
+                  "answer": "Option3"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 11,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the largest mammal in the world?",
+                  "option1": "Elephant",
+                  "option2": "Giraffe",
+                  "option3": "Blue Whale",
+                  "option4": "Hippopotamus",
+                  "answer": "Option3"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 12,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which planet is known as the 'Morning Star' or 'Evening Star'?",
+                  "option1": "Venus",
+                  "option2": "Mars",
+                  "option3": "Jupiter",
+                  "option4": "Saturn",
+                  "answer": "Option1"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 13,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the chemical symbol for silver?",
+                  "option1": "Si",
+                  "option2": "Sv",
+                  "option3": "Ag",
+                  "option4": "Sr",
+                  "answer": "Option3"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 14,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which gas do humans exhale when they breathe out?",
+                  "option1": "Oxygen",
+                  "option2": "Carbon Dioxide",
+                  "option3": "Nitrogen",
+                  "option4": "Helium",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 15,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the capital of Brazil?",
+                  "option1": "Rio de Janeiro",
+                  "option2": "Sao Paulo",
+                  "option3": "Brasilia",
+                  "option4": "Salvador",
+                  "answer": "Option3"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 16,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which gas is used in balloons to make them float?",
+                  "option1": "Oxygen",
+                  "option2": "Carbon Dioxide",
+                  "option3": "Helium",
+                  "option4": "Hydrogen",
+                  "answer": "Option3"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 17,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the largest continent by land area?",
+                  "option1": "Africa",
+                  "option2": "Asia",
+                  "option3": "North America",
+                  "option4": "Europe",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 18,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which planet is known as the 'Red Planet'?",
+                  "option1": "Earth",
+                  "option2": "Mars",
+                  "option3": "Venus",
+                  "option4": "Jupiter",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 19,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the chemical symbol for hydrogen?",
+                  "option1": "Hy",
+                  "option2": "Hg",
+                  "option3": "Hd",
+                  "option4": "Hn",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 20,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the chemical symbol for oxygen?",
+                  "option1": "Ox",
+                  "option2": "Oy",
+                  "option3": "Oz",
+                  "option4": "O",
+                  "answer": "Option4"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 21,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the smallest planet in our solar system?",
+                  "option1": "Earth",
+                  "option2": "Mars",
+                  "option3": "Venus",
+                  "option4": "Mercury",
+                  "answer": "Option4"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 22,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which gas is responsible for the 'Greenhouse Effect' on Earth?",
+                  "option1": "Oxygen",
+                  "option2": "Carbon Dioxide",
+                  "option3": "Nitrogen",
+                  "option4": "Methane",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 23,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the capital of Australia?",
+                  "option1": "Sydney",
+                  "option2": "Melbourne",
+                  "option3": "Canberra",
+                  "option4": "Perth",
+                  "answer": "Option3"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 24,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which planet is known as the 'Evening Star'?",
+                  "option1": "Earth",
+                  "option2": "Mars",
+                  "option3": "Jupiter",
+                  "option4": "Venus",
+                  "answer": "Option4"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 25,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the chemical symbol for carbon?",
+                  "option1": "Cr",
+                  "option2": "Co",
+                  "option3": "Ca",
+                  "option4": "C",
+                  "answer": "Option4"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 26,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the chemical symbol for nitrogen?",
+                  "option1": "Nt",
+                  "option2": "N",
+                  "option3": "Nr",
+                  "option4": "Ng",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 27,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which gas is used in soda drinks to make them fizzy?",
+                  "option1": "Oxygen",
+                  "option2": "Carbon Dioxide",
+                  "option3": "Nitrogen",
+                  "option4": "Hydrogen",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 28,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the capital of Canada?",
+                  "option1": "Toronto",
+                  "option2": "Montreal",
+                  "option3": "Ottawa",
+                  "option4": "Vancouver",
+                  "answer": "Option3"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 29,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the capital of China?",
+                  "option1": "Shanghai",
+                  "option2": "Hong Kong",
+                  "option3": "Beijing",
+                  "option4": "Guangzhou",
+                  "answer": "Option3"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 30,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which planet is known as the 'Blue Planet'?",
+                  "option1": "Earth",
+                  "option2": "Mars",
+                  "option3": "Jupiter",
+                  "option4": "Venus",
+                  "answer": "Option1"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 31,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the chemical symbol for helium?",
+                  "option1": "Hl",
+                  "option2": "He",
+                  "option3": "Hm",
+                  "option4": "Hn",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 32,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the chemical symbol for sodium?",
+                  "option1": "Sa",
+                  "option2": "So",
+                  "option3": "Sn",
+                  "option4": "Na",
+                  "answer": "Option4"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 33,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which gas is known as 'Laughing Gas'?",
+                  "option1": "Oxygen",
+                  "option2": "Carbon Dioxide",
+                  "option3": "Nitrous Oxide",
+                  "option4": "Methane",
+                  "answer": "Option3"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 34,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the capital of France?",
+                  "option1": "Paris",
+                  "option2": "London",
+                  "option3": "Berlin",
+                  "option4": "Madrid",
+                  "answer": "Option1"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 35,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is 2 + 2?",
+                  "option1": "1",
+                  "option2": "3",
+                  "option3": "4",
+                  "option4": "5",
+                  "answer": "Option3"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 36,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the largest planet in our solar system?",
+                  "option1": "Earth",
+                  "option2": "Mars",
+                  "option3": "Saturn",
+                  "option4": "Jupiter",
+                  "answer": "Option4"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 37,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which gas do plants absorb from the atmosphere?",
+                  "option1": "Oxygen",
+                  "option2": "Carbon Dioxide",
+                  "option3": "Nitrogen",
+                  "option4": "Hydrogen",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 38,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the capital of Japan?",
+                  "option1": "Beijing",
+                  "option2": "Seoul",
+                  "option3": "Tokyo",
+                  "option4": "Bangkok",
+                  "answer": "Option3"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 39,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which planet is known as the Red Planet?",
+                  "option1": "Earth",
+                  "option2": "Mars",
+                  "option3": "Venus",
+                  "option4": "Mercury",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 40,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the chemical symbol for gold?",
+                  "option1": "Go",
+                  "option2": "Au",
+                  "option3": "Ag",
+                  "option4": "Ge",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 41,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which gas is most abundant in Earth's atmosphere?",
+                  "option1": "Oxygen",
+                  "option2": "Carbon Dioxide",
+                  "option3": "Nitrogen",
+                  "option4": "Hydrogen",
+                  "answer": "Option3"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 42,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the largest mammal in the world?",
+                  "option1": "Elephant",
+                  "option2": "Giraffe",
+                  "option3": "Blue Whale",
+                  "option4": "Hippopotamus",
+                  "answer": "Option3"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 43,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which planet is known as the 'Morning Star' or 'Evening Star'?",
+                  "option1": "Venus",
+                  "option2": "Mars",
+                  "option3": "Jupiter",
+                  "option4": "Saturn",
+                  "answer": "Option1"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 44,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the chemical symbol for silver?",
+                  "option1": "Si",
+                  "option2": "Sv",
+                  "option3": "Ag",
+                  "option4": "Sr",
+                  "answer": "Option3"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 45,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which gas do humans exhale when they breathe out?",
+                  "option1": "Oxygen",
+                  "option2": "Carbon Dioxide",
+                  "option3": "Nitrogen",
+                  "option4": "Helium",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 46,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the capital of Brazil?",
+                  "option1": "Rio de Janeiro",
+                  "option2": "Sao Paulo",
+                  "option3": "Brasilia",
+                  "option4": "Salvador",
+                  "answer": "Option3"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 47,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which gas is used in balloons to make them float?",
+                  "option1": "Oxygen",
+                  "option2": "Carbon Dioxide",
+                  "option3": "Helium",
+                  "option4": "Hydrogen",
+                  "answer": "Option3"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 48,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the largest continent by land area?",
+                  "option1": "Africa",
+                  "option2": "Asia",
+                  "option3": "North America",
+                  "option4": "Europe",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 49,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which planet is known as the 'Red Planet'?",
+                  "option1": "Earth",
+                  "option2": "Mars",
+                  "option3": "Venus",
+                  "option4": "Jupiter",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 50,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the chemical symbol for hydrogen?",
+                  "option1": "Hy",
+                  "option2": "Hg",
+                  "option3": "Hd",
+                  "option4": "Hn",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 51,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the chemical symbol for oxygen?",
+                  "option1": "Ox",
+                  "option2": "Oy",
+                  "option3": "Oz",
+                  "option4": "O",
+                  "answer": "Option4"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 52,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the smallest planet in our solar system?",
+                  "option1": "Earth",
+                  "option2": "Mars",
+                  "option3": "Venus",
+                  "option4": "Mercury",
+                  "answer": "Option4"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 53,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which gas is responsible for the 'Greenhouse Effect' on Earth?",
+                  "option1": "Oxygen",
+                  "option2": "Carbon Dioxide",
+                  "option3": "Nitrogen",
+                  "option4": "Methane",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 54,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the capital of Australia?",
+                  "option1": "Sydney",
+                  "option2": "Melbourne",
+                  "option3": "Canberra",
+                  "option4": "Perth",
+                  "answer": "Option3"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 55,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which planet is known as the 'Evening Star'?",
+                  "option1": "Earth",
+                  "option2": "Mars",
+                  "option3": "Jupiter",
+                  "option4": "Venus",
+                  "answer": "Option4"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 56,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the chemical symbol for carbon?",
+                  "option1": "Cr",
+                  "option2": "Co",
+                  "option3": "Ca",
+                  "option4": "C",
+                  "answer": "Option4"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 57,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the chemical symbol for nitrogen?",
+                  "option1": "Nt",
+                  "option2": "N",
+                  "option3": "Nr",
+                  "option4": "Ng",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 58,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which gas is used in soda drinks to make them fizzy?",
+                  "option1": "Oxygen",
+                  "option2": "Carbon Dioxide",
+                  "option3": "Nitrogen",
+                  "option4": "Hydrogen",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 59,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the capital of Canada?",
+                  "option1": "Toronto",
+                  "option2": "Montreal",
+                  "option3": "Ottawa",
+                  "option4": "Vancouver",
+                  "answer": "Option3"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 60,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the capital of China?",
+                  "option1": "Shanghai",
+                  "option2": "Hong Kong",
+                  "option3": "Beijing",
+                  "option4": "Guangzhou",
+                  "answer": "Option3"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 61,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which planet is known as the 'Blue Planet'?",
+                  "option1": "Earth",
+                  "option2": "Mars",
+                  "option3": "Jupiter",
+                  "option4": "Venus",
+                  "answer": "Option1"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 62,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the chemical symbol for helium?",
+                  "option1": "Hl",
+                  "option2": "He",
+                  "option3": "Hm",
+                  "option4": "Hn",
+                  "answer": "Option2"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 63,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the chemical symbol for sodium?",
+                  "option1": "Sa",
+                  "option2": "So",
+                  "option3": "Sn",
+                  "option4": "Na",
+                  "answer": "Option4"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 64,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "Which gas is known as 'Laughing Gas'?",
+                  "option1": "Oxygen",
+                  "option2": "Carbon Dioxide",
+                  "option3": "Nitrous Oxide",
+                  "option4": "Methane",
+                  "answer": "Option3"
+              }
+          },
+          {
+              "model": "exam.question",
+              "pk": 65,
+              "fields": {
+                  "course": 1,
+                  "marks": 10,
+                  "question": "What is the capital of France?",
+                  "option1": "Paris",
+                  "option2": "London",
+                  "option3": "Berlin",
+                  "option4": "Madrid",
+                  "answer": "Option1"
+              }
+          }
+]
