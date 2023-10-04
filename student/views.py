@@ -1,9 +1,10 @@
 import json
+import random
 from django.shortcuts import get_object_or_404, render,redirect,reverse
 from . import forms,models
 from django.db.models import Sum
 from django.contrib.auth.models import Group
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.conf import settings
 from datetime import date, timedelta
@@ -72,23 +73,30 @@ def take_exam_view(request,pk):
 
 def start_exam_view(request, pk):
     course = get_object_or_404(QMODEL.Course, id=pk)
-    questions = QMODEL.Question.objects.filter(course=course)
+    all_questions = QMODEL.Question.objects.filter(course=course)
+
+    # Check if there are at least 36 questions available for this course
+    if all_questions.count() < 36:
+        return HttpResponse("Not enough questions available for this course.")
+
+    # Select 36 random questions from the database
+    random_questions = random.sample(list(all_questions), 36)
 
     if request.method == 'POST':
         pass
 
     # Create a list of question data including options
-    question_data = [{'number': i + 1, 'question_text': question.question, 
-                     'options': [question.option1, question.option2, 
-                                 question.option3, question.option4]} 
-                    for i, question in enumerate(questions)]
+    question_data = [{'number': i + 1, 'question_text': question.question,
+                     'options': [question.option1, question.option2,
+                                 question.option3, question.option4]}
+                    for i, question in enumerate(random_questions)]
 
     # Group consecutive two-digit numbers
     grouped_numbers = []
     current_group = []
-    for digit in range(1, 51):
+    for digit in range(1, 37):  # Display only 36 questions
         current_group.append(str(digit))
-        if len(current_group) == 5 or digit == 50:
+        if len(current_group) == 6 or digit == 36:  # Group by 6 for 36 questions
             grouped_numbers.append(current_group)
             current_group = []
 
@@ -100,6 +108,38 @@ def start_exam_view(request, pk):
     }
 
     return render(request, 'student/start_exam.html', context)
+
+
+# def start_exam_view(request, pk):
+#     course = get_object_or_404(QMODEL.Course, id=pk)
+#     questions = QMODEL.Question.objects.filter(course=course)
+
+#     if request.method == 'POST':
+#         pass
+
+#     # Create a list of question data including options
+#     question_data = [{'number': i + 1, 'question_text': question.question, 
+#                      'options': [question.option1, question.option2, 
+#                                  question.option3, question.option4]} 
+#                     for i, question in enumerate(questions)]
+
+#     # Group consecutive two-digit numbers
+#     grouped_numbers = []
+#     current_group = []
+#     for digit in range(1, 51):
+#         current_group.append(str(digit))
+#         if len(current_group) == 5 or digit == 50:
+#             grouped_numbers.append(current_group)
+#             current_group = []
+
+#     context = {
+#         'course': course,
+#         'question_data': question_data,
+#         'grouped_numbers': grouped_numbers,
+#         'questions_json': json.dumps(question_data),  # Convert question data to JSON
+#     }
+
+#     return render(request, 'student/start_exam.html', context)
 
 
 # def start_exam_view(request, pk):
