@@ -74,13 +74,13 @@ def take_exam_view(request,pk):
 def start_exam_view(request, pk):
     course = get_object_or_404(QMODEL.Course, id=pk)
     all_questions = QMODEL.Question.objects.filter(course=course)
-
-    # Check if there are at least 36 questions available for this course
-    if all_questions.count() < 36:
+    total_questions = all_questions.count() 
+    # Check if there are at least 7 questions available for this course
+    if all_questions.count() < 7:
         return HttpResponse("Not enough questions available for this course.")
 
-    # Select 36 random questions from the database
-    random_questions = random.sample(list(all_questions), 36)
+    # Select 7 random questions from the database
+    random_questions = random.sample(list(all_questions), 7)
 
     if request.method == 'POST':
         pass
@@ -94,9 +94,9 @@ def start_exam_view(request, pk):
     # Group consecutive two-digit numbers
     grouped_numbers = []
     current_group = []
-    for digit in range(1, 37):  # Display only 36 questions
+    for digit in range(1, 7):  # Display only 7 questions
         current_group.append(str(digit))
-        if len(current_group) == 6 or digit == 36:  # Group by 6 for 36 questions
+        if len(current_group) == 6 or digit == 7:  # Group by 6 for 7 questions
             grouped_numbers.append(current_group)
             current_group = []
 
@@ -104,101 +104,15 @@ def start_exam_view(request, pk):
         'course': course,
         'question_data': question_data,
         'grouped_numbers': grouped_numbers,
-        'questions_json': json.dumps(question_data),  # Convert question data to JSON
+        'questions_json': json.dumps(question_data), 
+        'total_questions': total_questions,
+        # Convert question data to JSON
     }
 
     return render(request, 'student/start_exam.html', context)
 
 
-# def start_exam_view(request, pk):
-#     course = get_object_or_404(QMODEL.Course, id=pk)
-#     questions = QMODEL.Question.objects.filter(course=course)
 
-#     if request.method == 'POST':
-#         pass
-
-#     # Create a list of question data including options
-#     question_data = [{'number': i + 1, 'question_text': question.question, 
-#                      'options': [question.option1, question.option2, 
-#                                  question.option3, question.option4]} 
-#                     for i, question in enumerate(questions)]
-
-#     # Group consecutive two-digit numbers
-#     grouped_numbers = []
-#     current_group = []
-#     for digit in range(1, 51):
-#         current_group.append(str(digit))
-#         if len(current_group) == 5 or digit == 50:
-#             grouped_numbers.append(current_group)
-#             current_group = []
-
-#     context = {
-#         'course': course,
-#         'question_data': question_data,
-#         'grouped_numbers': grouped_numbers,
-#         'questions_json': json.dumps(question_data),  # Convert question data to JSON
-#     }
-
-#     return render(request, 'student/start_exam.html', context)
-
-
-# def start_exam_view(request, pk):
-#     course = get_object_or_404(QMODEL.Course, id=pk)
-#     questions = QMODEL.Question.objects.filter(course=course)
-
-#     if request.method == 'POST':
-#         pass
-
-#     # Create a list of question numbers and their corresponding questions
-#     question_data = [{'number': i + 1, 'question_text': question.question} for i, question in enumerate(questions)]
-
-#     # Group consecutive two-digit numbers
-#     grouped_numbers = []
-#     current_group = []
-#     for digit in range(1, 51):
-#         current_group.append(str(digit))
-#         if len(current_group) == 5 or digit == 50:
-#             grouped_numbers.append(current_group)
-#             current_group = []
-
-#     context = {
-#         'course': course,
-#         'question_data': question_data,
-#         'grouped_numbers': grouped_numbers,
-#         'questions_json': json.dumps(question_data),  # Convert question data to JSON
-#     }
-
-#     return render(request, 'student/start_exam.html', context)
-
-
-
-
-
-# def start_exam_view(request, pk):
-#     course = get_object_or_404(QMODEL.Course, id=pk)
-#     questions = QMODEL.Question.objects.filter(course=course)
-
-#     if request.method == 'POST':
-#         pass
-
-#     # Create a list of question numbers and their corresponding questions
-#     question_data = [{'number': i + 1, 'question_text': question.question} for i, question in enumerate(questions)]
-#     question_data_json = json.dumps(question_data) 
-#     # Group consecutive two-digit numbers
-#     grouped_numbers = []
-#     current_group = []
-#     for digit in range(1, 51):
-#         current_group.append(str(digit))
-#         if len(current_group) == 5 or digit == 50:
-#             grouped_numbers.append(current_group)
-#             current_group = []
-
-#     response = render(request, 'student/start_exam.html', {'course': course, 'question_data_json': question_data_json, 'question_data': question_data, 'grouped_numbers': grouped_numbers})
-
-#     # Set the course_id as a cookie (converted to string)
-#     response.set_cookie('course_id', str(course.id))
-
-#     return response
 
 @login_required(login_url='studentlogin')
 @user_passes_test(is_student)
@@ -226,6 +140,7 @@ def calculate_marks_view(request):
 
 
 
+
 @login_required(login_url='studentlogin')
 @user_passes_test(is_student)
 def view_result_view(request):
@@ -235,11 +150,20 @@ def view_result_view(request):
 
 @login_required(login_url='studentlogin')
 @user_passes_test(is_student)
-def check_marks_view(request,pk):
-    course=QMODEL.Course.objects.get(id=pk)
-    student = models.Student.objects.get(user_id=request.user.id)
-    results= QMODEL.Result.objects.all().filter(exam=course).filter(student=student)
-    return render(request,'student/check_marks.html',{'results':results})
+# def check_marks_view(request,pk):
+#     course=QMODEL.Course.objects.get(id=pk)
+#     student = models.Student.objects.get(user_id=request.user.id)
+#     results= QMODEL.Result.objects.all().filter(exam=course).filter(student=student)
+#     return render(request,'student/check_marks.html',{'results':results})
+
+def check_marks_view(request, pk):
+    course = QMODEL.Course.objects.get(pk=pk)
+    student = models.Student.objects.get(user=request.user)
+    results = QMODEL.Result.objects.filter(exam=course, student=student)
+
+    return render(request, 'student/check_marks.html', {'results': results})
+
+
 
 @login_required(login_url='studentlogin')
 @user_passes_test(is_student)

@@ -47,12 +47,15 @@
                     <div class="col-md-12 text-center mt-3">
                         <button class="btn btn-primary" id="prevBtn" onclick="showPreviousQuestion()">Previous</button>
                         <button class="btn btn-primary ml-2" id="nextBtn" onclick="showNextQuestion()">Next</button>
+                        <button class="btn btn-danger ml-2" id="submitBtn" >Submit Exam</button>
+
+
                     </div>
+                    <td><a class="btn btn-success btn-sm" style="border-radius:0px;" href="{% url 'view-result'  %}"><span class="glyphicon glyphicon-check"></span> Submit Exam</a></td>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+               
+ 
+
 
 <script>
     var currentQuestionIndex = 0;
@@ -61,6 +64,7 @@
     var prevBtn = document.getElementById('prevBtn');
     var nextBtn = document.getElementById('nextBtn');
     var answerSelected = false; // Flag to track if an answer is selected
+    var totalQuestions = {{ total_questions }}; 
     
     function showQuestion(index) {
         currentQuestionIndex = index;
@@ -89,6 +93,7 @@
 
         questionContainer.innerHTML = questionHtml;
         updateQuestionNumbersHighlight(index);
+        updateSubmitButton();
     }
     
     function updateQuestionNumbersHighlight(index) {
@@ -110,6 +115,7 @@
             showQuestion(currentQuestionIndex);
             answerSelected = false; // Reset the answer flag for the next question
         }
+        updateSubmitButton(); // Call the function to check and update the submit button
     }
     
     function showPreviousQuestion() {
@@ -118,8 +124,31 @@
             showQuestion(currentQuestionIndex);
             answerSelected = false; // Reset the answer flag for the previous question
         }
+        updateSubmitButton(); // Call the function to check and update the submit button
     }
     
+    function updateSubmitButton() {
+        if (currentQuestionIndex === questions.length - 1) {
+            // Enable the submit button if it's the last question
+            submitBtn.disabled = false;
+        } else if (answerSelected) {
+            // Enable the submit button if an answer is selected
+            submitBtn.disabled = false;
+        } else {
+            // Disable the submit button if no answer is selected and it's not the last question
+            submitBtn.disabled = true;
+        }
+    }
+
+    function redirectToViewResult() {
+        // Redirect to the view-result URL
+        console.log("Submit button clicked");
+        window.location.href = "{% url 'view-result' %}";
+    }
+
+    // Add an event listener to the Submit Exam button
+    var submitBtn = document.getElementById('submitBtn');
+    submitBtn.addEventListener('click', redirectToViewResult);
     // Handle radio button selection
     document.addEventListener('change', function (event) {
         if (event.target.type === 'radio' && event.target.name === 'answer') {
@@ -131,7 +160,8 @@
     // Initial display of the first question
     showQuestion(currentQuestionIndex);
     
-    
+
+
 </script>
 <br><br><br><br><br><br>
 {% endblock content %}
