@@ -161,8 +161,24 @@ def check_marks_view(request, pk):
     student = models.Student.objects.get(user=request.user)
     results = QMODEL.Result.objects.filter(exam=course, student=student)
 
-    return render(request, 'student/check_marks.html', {'results': results})
+    # Create a dictionary to store question IDs, answers, and results
+    question_data = {}
 
+    for result in results:
+        total_marks = result.exam.total_marks
+        if total_marks > 0:
+            result.percentage = (result.marks / total_marks) * 100
+        else:
+            result.percentage = 0
+
+        # Add question data to the dictionary
+        for question in result.exam.question_set.all():
+            question_data[question.id] = {
+                'answer': result.answer,
+                'result': result.marks >= total_marks * 0.6,
+            }
+
+    return render(request, 'student/check_marks.html', {'question_data': question_data})
 
 
 @login_required(login_url='studentlogin')

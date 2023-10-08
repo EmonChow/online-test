@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'teacher',
     'student',
     'widget_tweaks',
+    # 'templatetags '
 
 ]
 
@@ -83,9 +84,9 @@ WSGI_APPLICATION = 'onlinexam.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'online_exam',
+        'NAME': 'onlintest',
         'USER': 'postgres',
-        'PASSWORD':'12345',
+        'PASSWORD':'astagferullah',
         'HOST': 'localhost',
     }
 }
