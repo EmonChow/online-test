@@ -11,6 +11,9 @@ from datetime import date, timedelta
 from exam import models as QMODEL
 from teacher import models as TMODEL
 from django.http import HttpResponseNotFound
+from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
+
 
 #for showing signup/login button for student
 def studentclick_view(request):
@@ -156,29 +159,24 @@ def view_result_view(request):
 #     results= QMODEL.Result.objects.all().filter(exam=course).filter(student=student)
 #     return render(request,'student/check_marks.html',{'results':results})
 
+
+
+@login_required(login_url='studentlogin')  # Ensure the user is logged in to access this view
+
+
 def check_marks_view(request, pk):
-    course = QMODEL.Course.objects.get(pk=pk)
-    student = models.Student.objects.get(user=request.user)
-    results = QMODEL.Result.objects.filter(exam=course, student=student)
-
-    # Create a dictionary to store question IDs, answers, and results
-    question_data = {}
-
-    for result in results:
-        total_marks = result.exam.total_marks
-        if total_marks > 0:
-            result.percentage = (result.marks / total_marks) * 100
-        else:
-            result.percentage = 0
-
-        # Add question data to the dictionary
-        for question in result.exam.question_set.all():
-            question_data[question.id] = {
-                'answer': result.answer,
-                'result': result.marks >= total_marks * 0.6,
-            }
-
-    return render(request, 'student/check_marks.html', {'question_data': question_data})
+    try:
+        # Get the logged-in user (student) by primary key
+        student = models.Student.objects.get(pk=pk)
+        
+        # Filter questions based on the courses taken by the student
+        submitted_questions = QMODEL.Question.objects.filter(course__student=student)
+        
+        return render(request, 'student/check_marks.html', {'submitted_questions': submitted_questions})
+    except ObjectDoesNotExist:
+        # Handle the case where the student does not exist
+        # You can return an error page or redirect to another view
+        return render(request, 'student/student_not_found.html')
 
 
 @login_required(login_url='studentlogin')
