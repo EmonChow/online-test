@@ -153,30 +153,47 @@ def view_result_view(request):
 
 @login_required(login_url='studentlogin')
 @user_passes_test(is_student)
-# def check_marks_view(request,pk):
-#     course=QMODEL.Course.objects.get(id=pk)
-#     student = models.Student.objects.get(user_id=request.user.id)
-#     results= QMODEL.Result.objects.all().filter(exam=course).filter(student=student)
-#     return render(request,'student/check_marks.html',{'results':results})
+def check_marks_view(request, id):
+    # Retrieve the specific course using get_object_or_404
+    course = get_object_or_404(QMODEL.Course, id=id)
+
+    # Get all questions related to the specified course
+    submitted_questions = QMODEL.Question.objects.filter(course=course)
+
+    # Create a dictionary to store question results
+    question_results = {}
+
+    for question in submitted_questions:
+        # Fetch the result for the specific question and course
+        result = QMODEL.Result.objects.filter(exam=course, student=request.user.student).first()
+
+        # Store the question and result in the dictionary
+        question_results[question] = result
+
+    context = {
+        'course': course,
+        'submitted_questions': question_results,
+    }
+
+    return render(request, 'student/check_marks.html', context)
 
 
+# @login_required(login_url='studentlogin')  # Ensure the user is logged in to access this view
 
-@login_required(login_url='studentlogin')  # Ensure the user is logged in to access this view
 
-
-def check_marks_view(request, pk):
-    try:
-        # Get the logged-in user (student) by primary key
-        student = models.Student.objects.get(pk=pk)
+# def check_marks_view(request, pk):
+#     try:
+#         # Get the logged-in user (student) by primary key
+#         student = models.Student.objects.get(pk=pk)
         
-        # Filter questions based on the courses taken by the student
-        submitted_questions = QMODEL.Question.objects.filter(course__student=student)
+#         # Filter questions based on the courses taken by the student
+#         submitted_questions = QMODEL.Question.objects.filter(course__student=student)
         
-        return render(request, 'student/check_marks.html', {'submitted_questions': submitted_questions})
-    except ObjectDoesNotExist:
-        # Handle the case where the student does not exist
-        # You can return an error page or redirect to another view
-        return render(request, 'student/student_not_found.html')
+#         return render(request, 'student/check_marks.html', {'submitted_questions': submitted_questions})
+#     except ObjectDoesNotExist:
+#         # Handle the case where the student does not exist
+#         # You can return an error page or redirect to another view
+#         return render(request, 'student/student_not_found.html')
 
 
 @login_required(login_url='studentlogin')
@@ -185,4 +202,20 @@ def student_marks_view(request):
     courses=QMODEL.Course.objects.all()
     return render(request,'student/student_marks.html',{'courses':courses})
   
-  
+
+# @login_required(login_url='studentlogin')  
+# def view_results(request):
+#     # Get all the submitted questions and their options
+#     submitted_questions = QMODEL.Question.objects.all()
+
+#     # Get the results for each submitted question
+#     question_results = []
+#     for question in submitted_questions:
+#         results = QMODEL.Result.objects.filter(exam=question.course, student=request.user.student)
+#         question_results.append((question, results))
+
+#     context = {
+#         'submitted_questions': question_results,
+#     }
+
+#     return render(request, 'student/check_marks.html', context)

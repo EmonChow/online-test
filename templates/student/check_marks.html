@@ -38,10 +38,10 @@
                             <td>{{ question.question }}</td>
                             <td>
                                 <ul>
-                                    <li>{{ question.option1 }}</li>
-                                    <li>{{ question.option2 }}</li>
-                                    <li>{{ question.option3 }}</li>
-                                    <li>{{ question.option4 }}</li>
+                                    <li style="{% if question.answer == 'Option1' %} background-color: #c7ffce; font-weight: bold; {% endif %}">{{ question.option1 }}</li>
+                                    <li style="{% if question.answer == 'Option2' %} background-color: #c7ffce; font-weight: bold; {% endif %}">{{ question.option2 }}</li>
+                                    <li style="{% if question.answer == 'Option3' %} background-color: #c7ffce; font-weight: bold; {% endif %}">{{ question.option3 }}</li>
+                                    <li style="{% if question.answer == 'Option4' %} background-color: #c7ffce; font-weight: bold; {% endif %}">{{ question.option4 }}</li>
                                 </ul>
                             </td>
                         </tr>
@@ -52,4 +52,6 @@
         </div>
     </div>
 </div>
+
+
 {% endblock content %}

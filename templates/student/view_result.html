@@ -40,8 +40,8 @@
       <tr>
 
         <td> {{t.course_name}}</td>
-        
         <td><a class="btn btn-success btn-sm" style="border-radius: 0%;" href="{% url 'check-marks' t.id  %}"><span class="glyphicon glyphicon-eye-open"></span> View Marks</a></td>
+        {% comment %} <td><a class="btn btn-success btn-sm" style="border-radius: 0%;" href="{% url 'check-marks' t.id  %}"><span class="glyphicon glyphicon-eye-open"></span> View Marks</a></td> {% endcomment %}
       </tr>
       {% endfor %}
     </table>
