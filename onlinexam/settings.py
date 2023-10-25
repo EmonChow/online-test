@@ -84,9 +84,9 @@ WSGI_APPLICATION = 'onlinexam.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'onlintest',
+        'NAME': 'online_exam',
         'USER': 'postgres',
-        'PASSWORD':'astagferullah',
+        'PASSWORD':'12345',
         'HOST': 'localhost',
     }
 }
